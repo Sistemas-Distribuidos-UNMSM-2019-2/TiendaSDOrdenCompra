@@ -1,0 +1,96 @@
+/*
+ESTE ARCHIVO AFECTA A TODO EL PROYECTO
+En este archivo, ingresar solo estilos para usarse en todo el documento,
+en caso quieran personalizar, crear un .css para su clase 
+*/
+body {
+	background: rgba(242, 246, 248, 1);
+	background: -moz-linear-gradient(left, rgba(242, 246, 248, 1) 0%,
+		rgba(224, 239, 249, 1) 27%, rgba(216, 225, 231, 1) 56%,
+		rgba(181, 198, 208, 1) 90%, rgba(181, 198, 208, 1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(242, 246, 248,
+		1)), color-stop(27%, rgba(224, 239, 249, 1)),
+		color-stop(56%, rgba(216, 225, 231, 1)),
+		color-stop(90%, rgba(181, 198, 208, 1)),
+		color-stop(100%, rgba(181, 198, 208, 1)));
+	background: -webkit-linear-gradient(left, rgba(242, 246, 248, 1) 0%,
+		rgba(224, 239, 249, 1) 27%, rgba(216, 225, 231, 1) 56%,
+		rgba(181, 198, 208, 1) 90%, rgba(181, 198, 208, 1) 100%);
+	background: -o-linear-gradient(left, rgba(242, 246, 248, 1) 0%,
+		rgba(224, 239, 249, 1) 27%, rgba(216, 225, 231, 1) 56%,
+		rgba(181, 198, 208, 1) 90%, rgba(181, 198, 208, 1) 100%);
+	background: -ms-linear-gradient(left, rgba(242, 246, 248, 1) 0%,
+		rgba(224, 239, 249, 1) 27%, rgba(216, 225, 231, 1) 56%,
+		rgba(181, 198, 208, 1) 90%, rgba(181, 198, 208, 1) 100%);
+	background: linear-gradient(to right, rgba(242, 246, 248, 1) 0%,
+		rgba(224, 239, 249, 1) 27%, rgba(216, 225, 231, 1) 56%,
+		rgba(181, 198, 208, 1) 90%, rgba(181, 198, 208, 1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8',
+		endColorstr='#b5c6d0', GradientType=1);
+}
+
+.panel-login {
+	background-color: white;
+	margin-top: 5%;
+	-webkit-box-shadow: 0px 0px 53px -5px rgba(0, 0, 0, 0.62);
+	-moz-box-shadow: 0px 0px 53px -5px rgba(0, 0, 0, 0.62);
+	box-shadow: 0px 0px 53px -5px rgba(0, 0, 0, 0.62);
+	border-style: solid;
+	border-width: 0px;
+	border-radius : 25px;
+	margin-left:auto;
+	margin-right:auto;
+	
+}
+
+.panel-generico {
+	background-color: white;
+	width: 70%;
+	-webkit-box-shadow: 0px 0px 53px -5px rgba(0, 0, 0, 0.62);
+	-moz-box-shadow: 0px 0px 53px -5px rgba(0, 0, 0, 0.62);
+	box-shadow: 0px 0px 53px -5px rgba(0, 0, 0, 0.62);
+}
+
+@media only screen and (max-width: 770px) {
+	.panel-login {
+		width: 90%;
+	}
+}
+
+@media only screen and (max-width: 990px) {
+	.panel-generico {
+		width: 100%;
+	}
+}
+
+@media only screen and (man-width: 990px) and (min-width: 770) {
+	.panel-login {
+		width: 50%;
+	}
+}
+
+
+@media only screen and (min-width: 990px) {
+	.panel-login {
+		width: 30%;
+	}
+}
+
+/*Usar solo para botones en paneles*/
+.botones {
+	width: 100%;
+	background-color: transparent;
+	border-color: transparent;
+	color: black;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-bottom-color: #334FFF;
+}
+
+.botones:hover {
+	background-color: #B8C1FB;
+}
+
+label {
+	font-size: 10px;
+}

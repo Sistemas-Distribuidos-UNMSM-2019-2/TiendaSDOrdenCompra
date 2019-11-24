@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head
+	th:include="/auxiliar/import :: headFragment (pageTitle='Tienda SD')">
+<meta charset="UTF-8" />
+</head>
+
+<body>
+	<div th:insert="/auxiliar/navbar :: navbar(${nombreUsuario})"></div>
+	<div class="panel-generico form-horizontal col-md-offset-2"
+		id="panel-login">
+		<ul class="list-group">
+			<li class="list-group-item"><i style="color: blue;"
+				class="fas fa-arrow-circle-right"></i> Hola <strong><span
+					th:text="${nombreUsuario}"></span></strong>, aqu&iacute; algunas
+				indiaciones:</li>
+			<li class="list-group-item"><i style="color: green;"
+				class="fas fa-check"></i> No abras tu sesi&oacute;n en lugares
+				desconocidos.</li>
+			<li class="list-group-item"><i style="color: green;"
+				class="fas fa-check"></i> No des tu contrase&ntilde;a a otras
+				personas.</li>
+			<li class="list-group-item"><i style="color: green;"
+				class="fas fa-check"></i> Tu sesi&oacute;n se cerrar&aacute;
+				automaticamente en 30 minutos.</li>
+			<li class="list-group-item"><i style="color: green;"
+				class="fas fa-check"></i> Si no vas a utilizar la p&aacute;gina, por
+				favor cierra la sesi&oacute;n.</li>
+		</ul>
+	</div>
+	<br>
+
+	<div class="panel-generico form-horizontal col-md-offset-2"
+		id="panel-login">
+		<div class="form-group">
+			<div class="col-md-5">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<i style="color: blue" class="fas fa-university"></i>&nbsp;NUESTRA
+						MISI&Oacute;N
+					</div>
+					<div class="panel-body">
+						<p align="center">Somos una empresa comprometida en satisfacer
+							las necesidades de nuestros clientes, suministrando la mejor
+							calidad en productos alimenticios diversos.</p>
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<i style="color: blue" class="fas fa-university"></i>&nbsp;NUESTRA
+						VISI&Oacute;N
+					</div>
+					<div class="panel-body">
+						<p align="center">Ser el líder regional y socio más innovador para el 
+						cliente profesional de alimentos, lo que permitirá el crecimiento de 
+						su negocio y de su entorno</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<i style="color: blue" class="fas fa-box-open"></i>&nbsp;NUESTROS
+						PRODUCTOS
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<div class="col-md-4">
+								<p align="center"><strong>Agua mineral San Mateo</strong></p>
+								<img th:src="@{/images/inicio/producto1.jpg}" width="120" height="136" 
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+							<div class="col-md-4">
+								<p align="center"><strong>Galleta soda de agua</strong></p>
+								<img th:src="@{/images/inicio/producto2.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+							<div class="col-md-4">
+								<p align="center"><strong>Panet&oacute;n Donofrio </strong></p>
+								<img th:src="@{/images/inicio/producto3.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-4">
+								<p align="center"><strong>Volt</strong></p>
+								<img th:src="@{/images/inicio/producto4.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+							<div class="col-md-4">
+								<p align="center"><strong>Frugos</strong></p>
+								<img th:src="@{/images/inicio/producto5.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+							<div class="col-md-4">
+								<p align="center"><strong>Papel higi&eacute;nico</strong></p>
+								<img th:src="@{/images/inicio/producto6.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		th:src="@{/js/clases/EL NOMBRE DE TU JS}"></script>
+
+</body>
+</html>
