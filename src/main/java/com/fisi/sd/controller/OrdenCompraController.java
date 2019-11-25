@@ -87,6 +87,8 @@ public class OrdenCompraController {
 	public String listenerKafka(String ordenCompra) {
 		OrdenCompraModel ordenCompraModel = kafkaServicio.recibirMensaje(ordenCompra);
 		
+		System.out.println("Compra: " + ordenCompra);
+		
 		return "view/ordencompra";
 	}
 	
