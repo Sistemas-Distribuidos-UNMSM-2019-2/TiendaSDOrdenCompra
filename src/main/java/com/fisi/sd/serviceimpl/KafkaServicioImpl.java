@@ -16,8 +16,8 @@ public class KafkaServicioImpl implements KafkaServicio{
     private Gson jsonConverter;
 	
 	@Override
-	public void enviarMensaje(OrdenCompraModel ordenCompraModel) {
-		kafkaTemplate.send("validar", jsonConverter.toJson(ordenCompraModel));
+	public void enviarMensaje(OrdenCompraModel ordenCompraModel, String topico) {
+		kafkaTemplate.send(topico, jsonConverter.toJson(ordenCompraModel));
 	}
 
 	@Override

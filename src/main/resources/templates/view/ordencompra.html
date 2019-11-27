@@ -8,7 +8,7 @@
 	th:href="@{/css/dataTable/css/jquery.bdt.css}" />
 <body>
 	<div th:insert="/auxiliar/navbar :: navbar(${nombreUsuario})"></div>
-	
+
 	<div class="panel-generico form-horizontal col-md-offset-2 col-md-2"
 		style="padding-top: 10px;" id="panel-login">
 		<div th:if="${msj != null}">
@@ -16,102 +16,103 @@
 				<div class="col-md-12 mx-auto my-1">
 					<div th:switch="${msj}">
 						<div th:case="'EnvioExito'"
-							th:include="/auxiliar/alert :: alerta(mensaje='Se envi&oacute; la &oacute;rden de compra, tipo='success')"></div>
-						<div th:case="'ModificarExito'"
-							th:include="/auxiliar/alert :: alerta(mensaje='Se modific&oacute; la &oacute;rden de compra, tipo='success')"></div>
+							th:include="/auxiliar/alert :: alerta(mensaje='Se envi&oacute; la &oacute;rden de compra', tipo='success')"></div>
+						<div th:case="'Validacion'"
+							th:include="/auxiliar/alert :: alerta(mensaje='Se ha validado la orden de compra', tipo='success')"></div>
 						<div th:case="'EliminarExito'"
-							th:include="/auxiliar/alert :: alerta(mensaje='Se elimin&oacute; la &oacute;rden de compra de, tipo='success')"></div>
+							th:include="/auxiliar/alert :: alerta(mensaje='Se elimin&oacute; la &oacute;rden de compra de', tipo='success')"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="col-lg-12 panel-group">
-		    <div class="panel panel-primary" th:object=${cliente}>
-		      <div class="panel-heading">Datos personales</div>
-		      <div class="panel-body">
-		      	<div class="form-group">
-		      		<div class="group">
-		      			<label class="col-lg-2 control-label">RUC</label>
-						<div class="col-lg-4">
-							<input type="text" class="form-control input-sm" th:value="*{sRuc}" disabled>
+			<div class="panel panel-primary" th:object=${cliente}>
+				<div class="panel-heading">Datos personales</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<div class="group">
+							<label class="col-lg-2 control-label">RUC</label>
+							<div class="col-lg-4">
+								<input type="text" class="form-control input-sm"
+									th:value="*{sRuc}" disabled>
+							</div>
 						</div>
-		      		</div>
-		      		<div class="group">
-		      			<label class="col-lg-2 control-label">Nombre</label>
-						<div class="col-lg-4">
-							<input type="text" class="form-control input-sm" th:value="*{sNombre}" disabled>
+						<div class="group">
+							<label class="col-lg-2 control-label">Nombre</label>
+							<div class="col-lg-4">
+								<input type="text" class="form-control input-sm"
+									th:value="*{sNombre}" disabled>
+							</div>
 						</div>
-		      		</div>
+					</div>
+					<div class="form-group">
+						<div class="group">
+							<label class="col-lg-2 control-label">Ap. Paterno</label>
+							<div class="col-lg-4">
+								<input type="text" class="form-control input-sm"
+									th:value="*{sApellidoPaterno}" disabled>
+							</div>
+						</div>
+						<div class="group">
+							<label class="col-lg-2 control-label">Ap. Materno</label>
+							<div class="col-lg-4">
+								<input type="text" class="form-control input-sm"
+									th:value="*{sApellidoMaterno}" disabled>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-2 control-label">Direcci&oacute;n</label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control input-sm"
+								th:value="*{sDireccion}" disabled>
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<div class="group">
-						<label class="col-lg-2 control-label">Ap. Paterno</label>
-						<div class="col-lg-4">
-							<input type="text" class="form-control input-sm" th:value="*{sApellidoPaterno}" disabled>
-						</div>
-					</div>
-					<div class="group">
-						<label class="col-lg-2 control-label">Ap. Materno</label>
-						<div class="col-lg-4">
-							<input type="text" class="form-control input-sm" th:value="*{sApellidoMaterno}" disabled>
-						</div>
-					</div>
-				</div>	
-				<div class="form-group">
-					<label class="col-lg-2 control-label">Direcci&oacute;n</label>
-					<div class="col-lg-10">
-						<input type="text" class="form-control input-sm" th:value="*{sDireccion}" disabled>
-					</div>
-				</div>	
-		      </div>
-		    </div>
+			</div>
 		</div>
-						
+
 		<br></br>
 		<div class="col-lg-12 panel-group">
-		    <div class="panel panel-primary">
-		      <div class="panel-heading">Cat&aacute;logo de productos</div>
-		      <div class="panel-body">
-			      <form action="/enviarOrdenCompra" th:action="@{/enviarOrdenCompra}"
-						id="formGenerico" name="formGenerico" method="POST"
-						th:object=${ordenCompraModel}>
-		
-						<div class="col-md-6">
-							<div class="form-group">
-								<br>
-								<h3 class="col-md-12 " style="text-align: center;">Escoge los
-								productos</h3>
-								<br>
-							</div>
-							<div id="tablaProductos"></div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<br>
-								<h3 class="col-md-12" style="text-align: center;">Productos Seleccionados</h3>
-								<br>
-							</div>
-							<div id="c_tablaProductosSeleccionados"></div>
-						</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">Cat&aacute;logo de productos</div>
+				<div class="panel-body" th:object=${ordenCompraModel}>
+
+					<div class="col-md-6">
 						<div class="form-group">
-							<label class="col-md-2 col-md-offset-8 " style="font-size: 18px;">Total
-								a Pagar&nbsp;</label> <label class="col-md-2" style="font-size: 18px;"
-								id="totalPagar">S/.0</label>
+							<br>
+							<h3 class="col-md-12 " style="text-align: center;">Escoge
+								los productos</h3>
+							<br>
 						</div>
+						<div id="tablaProductos"></div>
+					</div>
+					<div class="col-md-6">
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-3" style="float: right">
-								<input type="submit" class="btn btn-success btn-sm"
-									value="Guardar"> <input type="submit"
-									class="btn btn-danger btn-sm" id="Eliminar" value="Eliminar">
-							</div>
+							<br>
+							<h3 class="col-md-12" style="text-align: center;">Productos
+								Seleccionados</h3>
+							<br>
 						</div>
-					</form>		
-		      </div>
-		      </div>
+						<div id="c_tablaProductosSeleccionados"></div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-md-offset-8 " style="font-size: 18px;">Total
+							a Pagar&nbsp;</label> <label class="col-md-2" style="font-size: 18px;"
+							id="totalPagar">S/.0</label>
+					</div>
+					<div class="form-group">
+						<div class="col-md-6 col-md-offset-3" style="float: right">
+							<button type="button" class="btn btn-success btn-sm"
+								onclick="enviarOrdenCompra()">Enviar orden de compra</button>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div> 
+		</div>
 	</div>
+
 
 	<div class="modal fade" id="modalCantidadProducto" role="dialog">
 		<div class="modal-dialog modal-sm">
@@ -122,9 +123,9 @@
 					<h4 class="modal-title">Agregar Cantidad</h4>
 				</div>
 				<div class="modal-body">
-						<input type="number" id="cantProducto" name="cantProducto"
-							class="form-control" placeholder="Cantidad" min="1"/> <input
-							type="hidden" id="codProducto" name="codProducto" />
+					<input type="number" id="cantProducto" name="cantProducto"
+						class="form-control" placeholder="Cantidad" min="1" /> <input
+						type="hidden" id="codProducto" name="codProducto" />
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success btn-sm"
@@ -134,7 +135,68 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<div class="modal fade" id="modalCantidadMenosProducto" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Disminuir Cantidad</h4>
+				</div>
+				<div class="modal-body">
+					<input type="number" id="cantProducto2" name="cantProducto2"
+						class="form-control" placeholder="Cantidad" min="1" /> <input
+						type="hidden" id="codProducto2" name="codProducto2" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm"
+						onclick="eliminarCantidadProducto()">Aceptar</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modalValidacionOrdenCompra" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Validación de orden de compra</h4>
+				</div>
+				<div class="modal-body">
+					<p>No tenemos el stock suficiente para algunos productos que
+					solicitó, puede guiarse de la siguiente tabla:</p>
+					<div id="tablaValidacion"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm"
+						onclick="closeModalValidacion()">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modalHayStock" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Orden de compra - Estado</h4>
+				</div>
+				<div class="modal-body">
+					<p>Tenemos en stock todos los productos que solicitó.</p>
+					<p>¿Dese proceder con su orden de compra?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm"
+						onclick="realizarCompra()">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<script type="text/javascript" th:src="@{/js/clases/ordencompra.js}"></script>
 	<script type="text/javascript"
 		th:src="@{/js/dataTable/js/jquery.bdt.js}"></script>
