@@ -11,20 +11,6 @@
 
 	<div class="panel-generico form-horizontal col-md-offset-2 col-md-2"
 		style="padding-top: 10px;" id="panel-login">
-		<div th:if="${msj != null}">
-			<div class="form-group">
-				<div class="col-md-12 mx-auto my-1">
-					<div th:switch="${msj}">
-						<div th:case="'EnvioExito'"
-							th:include="/auxiliar/alert :: alerta(mensaje='Se envi&oacute; la &oacute;rden de compra', tipo='success')"></div>
-						<div th:case="'Validacion'"
-							th:include="/auxiliar/alert :: alerta(mensaje='Se ha validado la orden de compra', tipo='success')"></div>
-						<div th:case="'EliminarExito'"
-							th:include="/auxiliar/alert :: alerta(mensaje='Se elimin&oacute; la &oacute;rden de compra de', tipo='success')"></div>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<div class="col-lg-12 panel-group">
 			<div class="panel panel-primary" th:object=${cliente}>
@@ -115,7 +101,7 @@
 
 
 	<div class="modal fade" id="modalCantidadProducto" role="dialog">
-		<div class="modal-dialog modal-sm">
+		<div class="modal-dialog modal-lg">
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
@@ -137,7 +123,7 @@
 	</div>
 	
 	<div class="modal fade" id="modalCantidadMenosProducto" role="dialog">
-		<div class="modal-dialog modal-sm">
+		<div class="modal-dialog modal-lg">
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
@@ -159,10 +145,11 @@
 	</div>
 	
 	<div class="modal fade" id="modalValidacionOrdenCompra" role="dialog">
-		<div class="modal-dialog modal-sm">
+		<div class="modal-dialog modal-lg">
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Validación de orden de compra</h4>
 				</div>
 				<div class="modal-body">
@@ -179,10 +166,11 @@
 	</div>
 	
 	<div class="modal fade" id="modalHayStock" role="dialog">
-		<div class="modal-dialog modal-sm">
+		<div class="modal-dialog modal-lg">
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Orden de compra - Estado</h4>
 				</div>
 				<div class="modal-body">
@@ -192,6 +180,26 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success btn-sm"
 						onclick="realizarCompra()">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modalFactura" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Factura</h4>
+				</div>
+				<div class="modal-body">
+					<div id="tablaFactura"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm"
+						onclick="imprimirFactura()">Imprimir</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
 		</div>
