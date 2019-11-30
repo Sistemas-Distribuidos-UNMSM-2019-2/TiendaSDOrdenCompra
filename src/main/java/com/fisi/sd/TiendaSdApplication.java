@@ -1,15 +1,15 @@
 package com.fisi.sd;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
 //@EnableJpaAuditing
 public class TiendaSdApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TiendaSdApplication.class, args);
+		SpringApplicationBuilder builder = new SpringApplicationBuilder(TiendaSdApplication.class);
+        builder.headless(false).run(args);
 	}
 
 }

@@ -7,6 +7,8 @@ public class FacturaModel {
 	private String sRucCliente;
 	private double nPrecioTotal;
 	private String sEstado;
+	private String sDireccionCliente;
+	private String sNombreCliente;
 	private List<OrdenCompraDetalleModel> lDetalleCompra;
 
 	public int getnCodigoOrden() {
@@ -39,6 +41,22 @@ public class FacturaModel {
 
 	public void setsEstado(String sEstado) {
 		this.sEstado = sEstado;
+	}
+
+	public String getsDireccionCliente() {
+		return sDireccionCliente;
+	}
+
+	public void setsDireccionCliente(String sDireccionCliente) {
+		this.sDireccionCliente = sDireccionCliente;
+	}
+
+	public String getsNombreCliente() {
+		return sNombreCliente;
+	}
+
+	public void setsNombreCliente(String sNombreCliente) {
+		this.sNombreCliente = sNombreCliente;
 	}
 
 	public List<OrdenCompraDetalleModel> getlDetalleCompra() {

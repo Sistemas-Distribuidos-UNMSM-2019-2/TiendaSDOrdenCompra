@@ -65,6 +65,8 @@ public class OrdenCompraController {
 		model.addAttribute("ordenCompra", ordenCompraModel);
 		model.addAttribute("cliente", clienteServicio.buscarCliente(oUsuarioModel.getsRUC()));
 		HttpSession session = request.getSession();
+		session.removeAttribute(LSITAMODELPRODUCTO);
+		session.removeAttribute(LSITAMODELPRODUCTO2);
 		session.setAttribute(LSITAMODELPRODUCTO, productoServicio.listarProductos());
 		session.setAttribute(LSITAMODELPRODUCTO2, new ArrayList<OrdenCompraDetalleModel>());
 		return "view/ordencompra";
@@ -96,11 +98,6 @@ public class OrdenCompraController {
 		sMensaje = ordenCompra;
 	}
 	
-	@KafkaListener(groupId = "c5", topics = "cuentas")
-	public void listenerKafka1(String ordenCompra) {
-		System.out.println("Cuentas : " + ordenCompra);
-	}
-	
 	@PostMapping("/validarOrdenCompra")
 	public void mostrarValidacionOrdenCompra(HttpServletRequest request, HttpServletResponse response) {
 		sMensaje = "";
@@ -108,6 +105,8 @@ public class OrdenCompraController {
 		while(sMensaje.compareTo("")==0) {
 			
 		}
+		
+		System.out.println(sMensaje);
 		
 		OrdenCompraModel ordenCompraModel = kafkaServicio.recibirMensaje(sMensaje);
 	
@@ -180,7 +179,7 @@ public class OrdenCompraController {
 			oCompraDetalleModel.setnCantidadProducto(cantProducto);
 			oCompraDetalleModel.setsNombreProducto(oProductoModel.getsNombre());
 			oCompraDetalleModel.setnCodigoProducto(nCodigoProducto);
-			oCompraDetalleModel.setnTotalParcial(cantProducto * oProductoModel.getnPrecioUnitario());
+			oCompraDetalleModel.setnTotalParcial((double) ((Math.round(cantProducto * oProductoModel.getnPrecioUnitario()) * 100d)/ 100d));
 			oCompraDetalleModel.setbExistencia(true);
 			
 			listaSeleccionados.add(oCompraDetalleModel);
@@ -200,7 +199,7 @@ public class OrdenCompraController {
 				oCompraDetalleModel.setnCantidadProducto(cantProducto);
 				oCompraDetalleModel.setsNombreProducto(oProductoModel.getsNombre());
 				oCompraDetalleModel.setnCodigoProducto(nCodigoProducto);
-				oCompraDetalleModel.setnTotalParcial(cantProducto * oProductoModel.getnPrecioUnitario());
+				oCompraDetalleModel.setnTotalParcial((double) ((Math.round(cantProducto * oProductoModel.getnPrecioUnitario()) * 100d)/ 100d));
 				oCompraDetalleModel.setbExistencia(true);
 				
 				listaSeleccionados.add(oCompraDetalleModel);
@@ -249,7 +248,7 @@ public class OrdenCompraController {
 					}
 					else {
 						auxiliar.setnCantidadProducto(auxiliar.getnCantidadProducto() - cantProducto);
-						auxiliar.setnTotalParcial(auxiliar.getnCantidadProducto() * oProductoModel.getnPrecioUnitario());
+						auxiliar.setnTotalParcial((double) ((Math.round(auxiliar.getnCantidadProducto() * oProductoModel.getnPrecioUnitario()) * 100d)/ 100d));
 					}
 					
 				}
@@ -309,6 +308,7 @@ public class OrdenCompraController {
 		for (OrdenCompraDetalleModel mpm : listaSeleccionados) {
 			suma += mpm.getnTotalParcial();
 		}
+		suma = (double) ((Math.round(suma) * 100d)/ 100d);
 		return suma;
 	}
 }
