@@ -26,7 +26,7 @@ public class KafkaConfiguration {
 	public ProducerFactory<String, String> producerFactory() {
 		Map<String, Object> config = new HashMap<>();
 
-		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.4.25:9092");
+		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.4.7:9092");
 		config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 
@@ -42,7 +42,7 @@ public class KafkaConfiguration {
 	public ConsumerFactory<String, String> consumerFactory() {
 		Map<String, Object> config = new HashMap<>();
 
-		config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.4.25:9092");
+		config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.4.7:9092");
 		config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		//config.put(ConsumerConfig.GROUP_ID_CONFIG, "myGroupId");

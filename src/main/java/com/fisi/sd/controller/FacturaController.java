@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -51,8 +52,8 @@ import net.sf.jasperreports.view.JasperViewer;
 
 @Controller
 public class FacturaController {
-	private Date date;
 	private SimpleDateFormat formatoFecha = new SimpleDateFormat("dd MMMM yyyy");
+	private SimpleDateFormat formatter1=new SimpleDateFormat("yyyy-MM-dd, HH:mm:ss");
 	@Autowired
 	@Qualifier("clienteService")
 	private ClienteServicioImpl clienteServicio;
@@ -72,7 +73,13 @@ public class FacturaController {
 		
 		Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("dataDetalleOrdenCompra", new JRBeanCollectionDataSource(facturaModel.getlDetalleCompra()));
-        parameters.put("sFechaFactura", formatoFecha.format(date).replace(" ", " de "));
+        try {
+			parameters.put("sFechaFactura", formatoFecha.format(formatter1.parse(facturaModel.getFechaFactura())).replace(" ", " de "));
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        //parameters.put("sFechaFactura", facturaModel.getFechaFactura());
         parameters.put("sRucEmpresa", "20602775683");
 
         List<FacturaModel> lFactura = new ArrayList<>();
@@ -103,8 +110,6 @@ public class FacturaController {
 		while(sMensaje.compareTo("")==0) {
 			
 		}
-		
-		date = Calendar.getInstance().getTime();
 		
 		FacturaModel facturaModel = jsonConverter.fromJson(sMensaje, FacturaModel.class);
 		ClienteModel clienteModel = clienteServicio.buscarCliente(facturaModel.getsRucCliente());
@@ -152,7 +157,13 @@ public class FacturaController {
 		sb.append("</tr>");
 		sb.append("</table>");
 		
-		sb.append("<p align=\"left\">Lima,"+ formatoFecha.format(date).replace(" ", " de ") +"</p>");
+		try {
+			sb.append("<p align=\"left\">Lima,"+ formatoFecha.format(formatter1.parse(facturaModel.getFechaFactura())).replace(" ", " de ") +"</p>");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//sb.append("<p align=\"left\">Lima,"+ facturaModel.getFechaFactura() +"</p>");
 		
 		sb.append("<table>");
 		sb.append("<tr>");

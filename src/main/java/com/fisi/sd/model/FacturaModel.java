@@ -1,5 +1,6 @@
 package com.fisi.sd.model;
 
+import java.util.Date;
 import java.util.List;
 
 public class FacturaModel {
@@ -7,6 +8,7 @@ public class FacturaModel {
 	private String sRucCliente;
 	private double nPrecioTotal;
 	private String sEstado;
+	private String fechaFactura;
 	private String sDireccionCliente;
 	private String sNombreCliente;
 	private List<OrdenCompraDetalleModel> lDetalleCompra;
@@ -41,6 +43,14 @@ public class FacturaModel {
 
 	public void setsEstado(String sEstado) {
 		this.sEstado = sEstado;
+	}
+
+	public String getFechaFactura() {
+		return fechaFactura;
+	}
+
+	public void setFechaFactura(String fechaFactura) {
+		this.fechaFactura = fechaFactura;
 	}
 
 	public String getsDireccionCliente() {
