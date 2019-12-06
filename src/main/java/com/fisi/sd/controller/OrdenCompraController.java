@@ -146,16 +146,20 @@ public class OrdenCompraController {
 	
 	private StringBuilder mostrarTablaValidacion(List<OrdenCompraDetalleModel> lOrdenCompraDetalle) {
 		StringBuilder sb = new StringBuilder();// tablaMateriaPrima
-		sb.append("<table id=\"" + "tablaValidacion" + "\" class=\"table table-hover table-striped bdt\" >");
-		sb.append("<th>Nombre</th>");
-		sb.append("<th style=\"text-align: center;\">Cantidad</th>");
-		sb.append("<th style=\"text-align: center;\">Estado</th></tr>");
-
+		sb.append("<table id=\"" + "tablaValidacion" + "\" class=\"table\" >");
+		sb.append("<thead class=\"thead-dark\" align=\"center\">");
+		sb.append("<tr>");
+		sb.append("<th class=\"align-middle\">Nombre</th>");
+		sb.append("<th class=\"align-middle\">Cantidad</th>");
+		sb.append("<th class=\"align-middle\">Estado</th></tr>");
+		sb.append("</tr>");
+		sb.append("</thead>");
+		
 		for(OrdenCompraDetalleModel auxiliar : lOrdenCompraDetalle) {
 			sb.append("<tr>");
-			sb.append("<td>" + auxiliar.getsNombreProducto() + "</td>");
-			sb.append("<td style=\"text-align: center;\">" + auxiliar.getnCantidadProducto() + "</td>");
-			sb.append("<td style=\"text-align: center;\">" + (auxiliar.isbExistencia()?"Tenemos":"No tenemos") + "</td>");
+			sb.append("<td class=\"align-middle\" align=\"center\">" + auxiliar.getsNombreProducto() + "</td>");
+			sb.append("<td class=\"align-middle\" align=\"center\">" + auxiliar.getnCantidadProducto() + "</td>");
+			sb.append("<td class=\"align-middle\" align=\"center\">" + (auxiliar.isbExistencia()?"Tenemos":"No tenemos") + "</td>");
 			sb.append("</tr>");
 		}
 		sb.append("</table>");
@@ -283,18 +287,22 @@ public class OrdenCompraController {
 	
 	public StringBuilder mostrarDetalle(List<OrdenCompraDetalleModel> lOrdenCompraDetalle) {
 		StringBuilder sb = new StringBuilder();// tablaMateriaPrima
-		sb.append("<table id=\"" + "c_tablaProductosSeleccionados" + "\" class=\"table table-hover table-striped bdt\" >");
-		sb.append("<th>Nombre</th>");
-		sb.append("<th style=\"text-align: center;\">Cantidad</th>");
-		sb.append("<th style=\"text-align: center;\">Total parcial</th>");
-		sb.append("<th style=\"text-align: center;\">Eliminar</th></tr>");
+		sb.append("<table id=\"" + "c_tablaProductosSeleccionados" + "\" class=\"table\" >");
+		sb.append("<thead class=\"table-info\" align=\"center\">");
+		sb.append("<tr>");
+		sb.append("<th class=\"align-middle\">Nombre</th>");
+		sb.append("<th class=\"align-middle\">Cantidad</th>");
+		sb.append("<th class=\"align-middle\">Total parcial</th>");
+		sb.append("<th class=\"align-middle\">Eliminar</th></tr>");
+		sb.append("</tr>");
+		sb.append("</thead>");
 
 		for(OrdenCompraDetalleModel auxiliar : lOrdenCompraDetalle) {
 			sb.append("<tr>");
-			sb.append("<td>" + auxiliar.getsNombreProducto() + "</td>");
-			sb.append("<td style=\"text-align: center;\">" + auxiliar.getnCantidadProducto() + "</td>");
-			sb.append("<td style=\"text-align: center;\">" + auxiliar.getnTotalParcial() + "</td>");
-			sb.append("<td style=\"text-align: center;\"><button type=\"button\" onclick=\"openModalProducto2('" + auxiliar.getnCodigoProducto()
+			sb.append("<td class=\"align-middle\">"+ auxiliar.getsNombreProducto() + "</td>");
+			sb.append("<td class=\"align-middle\">"+ auxiliar.getnCantidadProducto() + "</td>");
+			sb.append("<td class=\"align-middle\">" + auxiliar.getnTotalParcial() + "</td>");
+			sb.append("<td class=\"align-middle\"><button type=\"button\" onclick=\"openModalProducto2('" + auxiliar.getnCodigoProducto()
 					+ "')\" style=\"border-style:solid; border-width:1px; border-color:#2C1CD9; text-align: center;\"  "
 					+ "class=\"btn btn-default btn-sm\"><i  class=\"fas fa-minus-circle\"></i></i></button></td>");
 			sb.append("</tr>");

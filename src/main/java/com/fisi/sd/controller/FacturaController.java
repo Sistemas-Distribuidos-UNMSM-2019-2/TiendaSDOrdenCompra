@@ -131,72 +131,96 @@ public class FacturaController {
 	
 	private StringBuilder mostrarFactura(FacturaModel facturaModel) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("<table border=\"2px\">");
-		sb.append("<tr>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
-		sb.append("<td style=\"text-align: center; border=\"2px\";\">20602775683</td>");
-		sb.append("</tr>");
 		
-		sb.append("<tr>");
-		sb.append("<td style=\"text-align: left;\">Tienda Sistemas Distribuidos SAC</td>");
-		sb.append("<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
-		sb.append("<td style=\"text-align: center;\">Factura</td>");
-		sb.append("</tr>");
+		sb.append("<div class=\"row\">");
+		sb.append("<div class=\"col-md-8 text-center\">");
+		sb.append("</div>");
+		sb.append("<div class=\"col-md-4 text-center\">");
+		sb.append("<h4>20602775683");
+		sb.append("</h4>");
+		sb.append("</div>");
+		sb.append("</div>");
 		
-		sb.append("<tr>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
-		sb.append("<td style=\"text-align: center;\">n°"+facturaModel.getnCodigoOrden()+"</td>");
-		sb.append("</tr>");
-		sb.append("</table>");
+		sb.append("<div class=\"row\">");
+		sb.append("<div class=\"col-md-8 text-center\">");
+		sb.append("<h4>Tienda Sistemas Distribuidos SAC");
+		sb.append("</h4>");
+		sb.append("</div>");
+		sb.append("<div class=\"col-md-4 text-center\">");
+		sb.append("<h4>Factura");
+		sb.append("</h4>");
+		sb.append("</div>");		
+		sb.append("</div>");
 		
+		sb.append("<div class=\"row\">");
+		sb.append("<div class=\"col-md-8 text-center\">");
+		sb.append("</div>");
+		sb.append("<div class=\"col-md-4 text-center\">");
+		sb.append("<h4>" + facturaModel.getnCodigoOrden());
+		sb.append("</h4>");
+		sb.append("</div>");
+		sb.append("</div>");
+		
+		sb.append("<div class=\"row\">");
+		sb.append("<div class=\"col-md-12 text-center\">");
 		try {
-			sb.append("<p align=\"left\">Lima,"+ formatoFecha.format(formatter1.parse(facturaModel.getFechaFactura())).replace(" ", " de ") +"</p>");
+			sb.append("<h5 align=\"left\">Lima,"+ formatoFecha.format(formatter1.parse(facturaModel.getFechaFactura())).replace(" ", " de ") +"</h5>");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		sb.append("</div>");
+		sb.append("</div>");
+		
+		
+		sb.append("<div class=\"row\">");
+		sb.append("<div class=\"col-md-8 text-center\">");
+		sb.append("<h5 align=\"left\">Se&ntilde;or (es) " + facturaModel.getsNombreCliente());
+		sb.append("</h5>");
+		sb.append("</div>");
+		sb.append("<div class=\"col-md-4 text-center\">");
+		sb.append("<h5>RUC: " + facturaModel.getsRucCliente());
+		sb.append("</h5>");
+		sb.append("</div>");
+		sb.append("</div>");
+		
+		sb.append("<div class=\"row\">");
+		sb.append("<div class=\"col-md-12 text-center\">");
+		sb.append("<h5 align=\"left\">Direcci&oacute;n: "+ facturaModel.getsDireccionCliente());
+		sb.append("</h5>");
+		sb.append("</div>");
+		sb.append("</div>");
+		
 		//sb.append("<p align=\"left\">Lima,"+ facturaModel.getFechaFactura() +"</p>");
 		
-		sb.append("<table>");
+		sb.append("<div class=\"row\">");
+		sb.append("<div class=\"col-md-12 text-center\">");
+		
+		sb.append("<table id=\"" + "tablaFactura" + "\" class=\"table\" >");
+		sb.append("<thead class=\"table-primary\" align=\"center\">");
 		sb.append("<tr>");
-		sb.append("<td style=\"text-align: left;\">Se&ntilde;or (es) "+ facturaModel.getsNombreCliente() +"</td>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
-		sb.append("<td style=\"text-align: rigth;\">RUC: "+ facturaModel.getsRucCliente() +"</td>");
-		sb.append("<tr>");
-		sb.append("<td style=\"text-align: left;\">Direcci&oacute;n: "+ facturaModel.getsDireccionCliente() +"</td>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
-		sb.append("<td> </td>");
+		sb.append("<th class=\"align-middle\" align=\"center\">Nombre</th>");
+		sb.append("<th class=\"align-middle\" align=\"center\">Cantidad</th>");
+		sb.append("<th class=\"align-middle\" align=\"center\">Valor de venta (en soles)</th>");
 		sb.append("</tr>");
-		sb.append("</table>");
+		sb.append("</thead>");
 		
-		
-		sb.append("<table id=\"" + "tablaFactura" + "\" class=\"table table-hover table-striped bdt\" >");
-		sb.append("<th>Nombre</th>");
-		sb.append("<th style=\"text-align: center;\">Cantidad</th>");
-		sb.append("<th style=\"text-align: center;\">Valor de venta (en soles)</th></tr>");
 
 		for(OrdenCompraDetalleModel auxiliar : facturaModel.getlDetalleCompra()) {
 			sb.append("<tr>");
-			sb.append("<td>" + auxiliar.getsNombreProducto() + "</td>");
-			sb.append("<td style=\"text-align: center;\">" + auxiliar.getnCantidadProducto() + "</td>");
-			sb.append("<td style=\"text-align: center;\">" + auxiliar.getnTotalParcial()+ "</td>");
+			sb.append("<td class=\"align-middle\" align=\"center\">" + auxiliar.getsNombreProducto() + "</td>");
+			sb.append("<td class=\"align-middle\" align=\"center\">" + auxiliar.getnCantidadProducto() + "</td>");
+			sb.append("<td class=\"align-middle\" align=\"center\">" + auxiliar.getnTotalParcial()+ "</td>");
 			sb.append("</tr>");
 		}
 		sb.append("<tr>");
 		sb.append("<td> </td>");
-		sb.append("<td style=\"text-align: center;\">Total</td>");
-		sb.append("<td style=\"text-align: center;\">" + calcularSumaTotales(facturaModel.getlDetalleCompra()));
+		sb.append("<td class=\"align-middle\" align=\"center\">Total</td>");
+		sb.append("<td class=\"align-middle\" align=\"center\">" + calcularSumaTotales(facturaModel.getlDetalleCompra()) + "</td>");
+		sb.append("</tr>");
 		sb.append("</table>");
+		sb.append("</div>");
+		sb.append("</div>");
 		return sb;
 	}
 	

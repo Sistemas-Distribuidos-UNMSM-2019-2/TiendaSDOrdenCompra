@@ -38,17 +38,21 @@ public class CatalogoController {
 			List<ProductoModel> lProductoModal = productoServicio.listarProductos();
 			PrintWriter out = response.getWriter();
 			StringBuilder sb = new StringBuilder();// tablaMateriaPrima
-			sb.append("<table id=\"tablaCatalogo\" class=\"table table-default\" >");
-			sb.append("<th>Nombre</th>");
-			sb.append("<th>Descripci&oacute;n</th>");
-			sb.append("<th>Precio unitario</th>");
-			sb.append("<th style=\"text-align: center;\">Agregar</th>");
+			sb.append("<table id=\"tablaCatalogo\" class=\"table\" >");
+			sb.append("<thead class=\"table-primary\" align=\"center\">");
+			sb.append("<tr>");
+			sb.append("<th class=\"align-middle\">Nombre</th>");
+			sb.append("<th class=\"align-middle\">Descripci&oacute;n</th>");
+			sb.append("<th class=\"align-middle\">Precio unitario</th>");
+			sb.append("<th class=\"align-middle\">Agregar</th>");
+			sb.append("</tr>");
+			sb.append("</thead>");
 			for (ProductoModel auxiliar: lProductoModal) {
 				sb.append("<tr>");
-				sb.append("<td>" + auxiliar.getsNombre()+ "</td>");
-				sb.append("<td>" + auxiliar.getsDescripcion() + "</td>");
-				sb.append("<td style=\"text-align: center;\">" + auxiliar.getnPrecioUnitario() + "</td>");
-				sb.append("<td style=\"text-align: center;\"><button type=\"button\" onclick=\"openModalProducto('"
+				sb.append("<td class=\"align-middle\">" + auxiliar.getsNombre()+ "</td>");
+				sb.append("<td class=\"align-middle\">" + auxiliar.getsDescripcion() + "</td>");
+				sb.append("<td class=\"align-middle\">" + auxiliar.getnPrecioUnitario() + "</td>");
+				sb.append("<td class=\"align-middle\"><button type=\"button\" onclick=\"openModalProducto('"
 						+ auxiliar.getnCodigo()
 						+ "')\" style=\"border-style:solid; border-width:1px; border-color:#2C1CD9; text-align: center;\"  class=\"btn btn-default btn-sm\"><i  class=\"fas fa-plus\"></i></i></button></td>");
 				sb.append("</tr>");

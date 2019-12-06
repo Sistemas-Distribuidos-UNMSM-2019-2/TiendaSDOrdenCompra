@@ -4,34 +4,37 @@
 <head>
 </head>
 <body>
-	<div th:fragment="navbar(usu)" class="navbar">
-		<nav style="background-color: #8DC3DE; border-color: #8DC3DE;"
-			class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#myNavbar">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<img href="" th:src="@{/images/logo.png}" width="50p" height="50"
-						style="margin-left: auto; margin-right: auto;" />
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
-						<li><a style="color: white" href="/home">Tienda SD</a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a><span style="color: white;"
-								class="glyphicon glyphicon-user"></span>&nbsp;<span
-								style="color: white;" th:text="${nombreUsuario}"></span></a></li>
-						<li><a><span style="color: white;" id="g_tiempo_ind">30:00</span></a></li>
-						<li><a href="/logout"> <i style="color: white;" class="fas fa-sign-out-alt"></i>
-								&nbsp;<span style="color: white;">Cerrar Sesi&oacute;n</span></a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</div>
+	<nav th:fragment="navbar(usu)" class="navbar navbar-expand-md navbar-dark bg-dark">
+		<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+			<img href="" th:src="@{/images/logo.png}" width="50p" height="50"/>
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/home">Tienda SD</a>
+				</li>
+			</ul>
+		</div>
+		<div class="navbar-collapse collapse w-100 order-2 dual-collapse2">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<i style="color: white;"class="fas fa-user"></i> &nbsp;
+						<span style="color: white;" th:text="${nombreUsuario}"></span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<span style="color: white;" id="g_tiempo_ind">30:00</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/logout" class="nav-link"> 
+						<i style="color: white;"class="fas fa-sign-out-alt"></i> &nbsp;
+							<span style="color: white;">Cerrar Sesi&oacute;n</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
 </body>
 </html>

@@ -112,7 +112,7 @@ function agregarCantidadAProducto() {
 			var tablaSeleccionados = datos[0];
 			var totales = datos[1];
 			$("#c_tablaProductosSeleccionados").html(tablaSeleccionados);
-			$("#totalPagar").html("S/." + totales);
+			$("#totalPagar").html("Total a pagar:	S/." + totales);
 			closeModalProducto();
 		},
 		error : function(e) {
@@ -142,7 +142,7 @@ function eliminarCantidadProducto(codMatPrim) {
 			console.log(tablaSeleccionados);
 			var totales = datos[1];
 			$("#c_tablaProductosSeleccionados").html(tablaSeleccionados);
-			$("#totalPagar").html("S/." + totales);
+			$("#totalPagar").html("Total a pagar:	S/." + totales);
 			closeModalProducto2();
 		},
 		error : function(e) {
